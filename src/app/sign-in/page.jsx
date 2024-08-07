@@ -6,8 +6,8 @@ import logo from "../images/Eventful Text Red.png";
 import axios from "axios";
 
 const LoginPage = () => {
-  const [email, setEmail] = useState < string > "";
-  const [password, setPassword] = useState < string > "";
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
