@@ -5,18 +5,15 @@ import "../css/login.css";
 import logo from "../images/Eventful Text Red.png";
 
 const RegisterPage = () => {
-  const [formData, setFormData] =
-    useState <
-    FormData >
-    {
-      name: "",
-      username: "",
-      email: "",
-      role: "",
-      organizationName: "",
-      password: "",
-      verifyPassword: "",
-    };
+  const [formData, setFormData] = useState({
+    name: "",
+    username: "",
+    email: "",
+    role: "",
+    organizationName: "",
+    password: "",
+    verifyPassword: "",
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
