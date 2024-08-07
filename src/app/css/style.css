@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+
 .nav {
   background-color: red;
   color: #fff;
@@ -95,12 +97,14 @@ header a {
   margin-top: 3rem;
 }
 
-.features .container {
+.features .container,
+.upcoming-events .container {
   padding: 0 100px;
 }
 
-.features h1 {
-  font-family: Helvetica, Arial, sans-serif;
+.features h1,
+.upcoming-events h1 {
+  font-family: "Oswald", sans-serif;
   color: red;
   margin-bottom: 1rem;
 }
@@ -117,7 +121,7 @@ header a {
 }
 
 .feature h3 {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Oswald", sans-serif;
   margin: 0.5rem 0;
   font-size: 1.2rem;
   font-weight: 600;
@@ -134,4 +138,63 @@ header a {
 
 .feature .icons {
   text-align: left;
+}
+
+.event-cards {
+  margin: 2rem 0;
+  text-align: left;
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 6;
+}
+
+.event-card {
+  border: 1px solid #000;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.event-card .event-card-image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.event-card-details {
+  padding: 10px;
+  text-decoration: none;
+}
+
+.event-card h3 {
+  color: #000;
+  font-size: 1.5rem;
+  font-family: "Oswald", sans-serif;
+  display: block;
+}
+
+.event-card h3 {
+  color: #000;
+  font-size: 1.5rem;
+  font-family: "Oswald", sans-serif;
+}
+
+.event-card h5 {
+  background-color: rebeccapurple;
+  color: #fff;
+  display: inline-block;
+  border-radius: 10px;
+  padding: 3px 10px;
+  font-size: 0.7rem;
+  margin: 0.5rem 0;
+}
+
+.event-card .event-date {
+  display: block;
+  color: #000;
+  margin-right: 0.5rem;
+  font-weight: 900;
+  font-family: "Oswald" sans-serif;
 }
