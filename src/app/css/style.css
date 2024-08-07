@@ -1,0 +1,137 @@
+.nav {
+  background-color: red;
+  color: #fff;
+  padding: 20px 0;
+  position: fixed;
+  width: 100%;
+  z-index: 4;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+header a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-item {
+  list-style-type: none;
+  margin: 0 2rem;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.nav-item a {
+  text-decoration: none;
+}
+
+.nav-item a:hover {
+  font-size: 18px;
+  color: red;
+}
+
+.navbar-search input {
+  background-color: transparent;
+  border: 1.5px solid #fff;
+  border-radius: 20px;
+  padding-inline: 10px;
+  color: #fff;
+  height: 30px;
+}
+
+::placeholder {
+  font-size: smaller;
+  color: #fff;
+}
+
+.showcase {
+  background-image: url("../images/bg-image3.webp");
+  background-blend-mode: screen;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+  height: 100vh;
+}
+
+.showcase h1 {
+  font-size: 6rem;
+  letter-spacing: -0.02em;
+  color: red;
+  font-family: Helvetica, Arial, sans-serif;
+  margin-top: 12rem;
+}
+
+.showcase h2 {
+  margin-top: 1rem;
+  line-height: 1.5;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.showcase-btn {
+  margin: 2rem;
+}
+
+.features,
+.upcoming-events {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.features .container {
+  padding: 0 100px;
+}
+
+.features h1 {
+  font-family: Helvetica, Arial, sans-serif;
+  color: red;
+  margin-bottom: 1rem;
+}
+
+.feature {
+  border-radius: 16px;
+  border: 1px solid #000;
+  background-color: #fff;
+  padding: 20px;
+  text-align: left;
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+}
+
+.feature h3 {
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 160%;
+}
+
+.feature h6 {
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 160%;
+  margin-top: 1rem;
+  color: darkslategray;
+}
+
+.feature .icons {
+  text-align: left;
+}
