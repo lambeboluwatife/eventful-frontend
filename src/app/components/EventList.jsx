@@ -13,7 +13,7 @@ const EventList = ({ events }) => {
                 {" "}
                 <Image
                   width={600}
-                  height={300}
+                  height={200}
                   priority={false}
                   src={event.backdrop}
                   alt={`${event.title} backdrop`}
@@ -25,20 +25,26 @@ const EventList = ({ events }) => {
                       ? event.title.substring(0, 15) + "..."
                       : event.title}
                   </h3>
-                  <h5>{event.location}</h5>
-                  <h6 className="event-date">
-                    {`${moment(event.date, "DD/MM/YYYY").format(
-                      "MMM D, YY"
-                    )} . ${event.time}`}
-                  </h6>
-                  <h6 className="event-category">{event.category}</h6>
+                  <h5 className="event-location">{event.location}</h5>
+                  <div className="event-timeline">
+                    <span>
+                      <h6 className="event-date">
+                        {moment(event.date, "DD/MM/YYYY").format(
+                          "ddd. D MMM, YY"
+                        )}
+                      </h6>
+                    </span>
+                    <span>
+                      <h6 className="event-time">{event.time}</h6>
+                    </span>
+                  </div>
                   <h6 className="event-price">
                     {event.price === 0 ? "Free" : `N${event.price}`}
                   </h6>
 
-                  <h6 className="event-organizer">
-                    {event.organizer.organizationName}
-                  </h6>
+                  <h5 className="event-organizer">
+                    {`Created By: ${event.organizer.organizationName}`}
+                  </h5>
                 </div>
               </Link>
             </div>

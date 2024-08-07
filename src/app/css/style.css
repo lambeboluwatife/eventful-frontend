@@ -62,7 +62,7 @@ header a {
 }
 
 .showcase {
-  background-image: url("../images/bg-image3.webp");
+  background-image: url("../images/bg-image4.webp");
   background-blend-mode: screen;
   background-size: cover;
   background-position: center;
@@ -148,6 +148,11 @@ header a {
   grid-row: span 6;
 }
 
+.event-cards .grid-4 {
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+}
+
 .event-card {
   border: 1px solid #000;
   border-radius: 10px;
@@ -155,46 +160,72 @@ header a {
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
+}
+
+.event-card:hover {
+  transform: scale(0.95);
+  transition: ease-in;
+}
+
+.event-card a {
   text-decoration: none;
+  color: #000;
 }
 
 .event-card .event-card-image {
   width: 100%;
+  height: auto;
   object-fit: cover;
 }
 
 .event-card-details {
   padding: 10px;
-  text-decoration: none;
 }
 
 .event-card h3 {
   color: #000;
   font-size: 1.5rem;
-  font-family: "Oswald", sans-serif;
+  /* font-family: "Oswald", sans-serif; */
   display: block;
 }
 
-.event-card h3 {
-  color: #000;
-  font-size: 1.5rem;
-  font-family: "Oswald", sans-serif;
-}
-
-.event-card h5 {
+.event-card .event-location {
   background-color: rebeccapurple;
   color: #fff;
   display: inline-block;
   border-radius: 10px;
   padding: 3px 10px;
   font-size: 0.7rem;
-  margin: 0.5rem 0;
+  margin: 0.2rem 0;
+  text-transform: uppercase;
 }
 
-.event-card .event-date {
-  display: block;
+.event-card .event-timeline {
+  margin: 0.2rem 0;
+}
+
+.event-card .event-date,
+.event-card .event-time {
   color: #000;
   margin-right: 0.5rem;
   font-weight: 900;
-  font-family: "Oswald" sans-serif;
+  /* font-family: "Oswald" sans-serif; */
+  font-size: 1rem;
+  display: inline;
+}
+
+.event-card .event-time {
+  background-color: red;
+  padding: 3px 10px;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.event-card span {
+  display: inline;
+}
+
+.event-card .event-organizer {
+  margin: 0.3rem 0;
+  /* font-family: "Oswald" sans-serif; */
 }
