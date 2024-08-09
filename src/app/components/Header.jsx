@@ -1,6 +1,6 @@
 import { Roboto } from "next/font/google";
 import Link from "next/link";
-import logo from "../images/Eventful Text White.png";
+import logo from "../../../public/images/Eventful Text White.png";
 import Image from "next/image";
 
 const roboto = Roboto({ subsets: ["latin"], weight: "300" });

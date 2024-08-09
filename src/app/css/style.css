@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:wght@500&family=Oswald:wght@200..700&family=Roboto:wght@400;500;700&display=swap");
 
 .nav {
   background-color: red;
@@ -7,6 +7,7 @@
   position: fixed;
   width: 100%;
   z-index: 4;
+  font-family: "Montserrat", sans-serif;
 }
 
 header {
@@ -62,7 +63,7 @@ header a {
 }
 
 .showcase {
-  background-image: url("../images/bg-image4.webp");
+  background-image: url("/images/bg-image4.webp");
   background-blend-mode: screen;
   background-size: cover;
   background-position: center;
@@ -81,6 +82,9 @@ header a {
 }
 
 .showcase h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-style: normal;
   margin-top: 1rem;
   line-height: 1.5;
   font-size: 1.5rem;
@@ -89,6 +93,7 @@ header a {
 
 .showcase-btn {
   margin: 2rem;
+  font-family: "Montserrat", sans-serif;
 }
 
 .features,
@@ -180,12 +185,17 @@ header a {
 
 .event-card-details {
   padding: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 .event-card h3 {
   color: #000;
   font-size: 1.5rem;
-  /* font-family: "Oswald", sans-serif; */
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
   display: block;
 }
 
@@ -209,7 +219,7 @@ header a {
   color: #000;
   margin-right: 0.5rem;
   font-weight: 900;
-  /* font-family: "Oswald" sans-serif; */
+  font-family: "Oswald" sans-serif;
   font-size: 1rem;
   display: inline;
 }
@@ -227,5 +237,5 @@ header a {
 
 .event-card .event-organizer {
   margin: 0.3rem 0;
-  /* font-family: "Oswald" sans-serif; */
+  font-family: "Oswald" sans-serif;
 }
