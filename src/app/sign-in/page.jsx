@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import "../css/login.css";
-import logo from "../images/Eventful Text Red.png";
+import logo from "../../../public/images/Eventful Text Red.png";
 import axios from "axios";
 
 const LoginPage = () => {
