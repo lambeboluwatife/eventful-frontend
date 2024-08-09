@@ -1,7 +1,7 @@
 .header {
   min-height: 100vh;
   height: 100vh;
-  background-image: url("../images/bg-img.webp");
+  background-image: url("/images/bg-img.webp");
   background-color: hsla(10, 86%, 58%, 0.8);
   background-blend-mode: screen;
   background-size: cover;
