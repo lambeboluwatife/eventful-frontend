@@ -1,27 +1,104 @@
-import EventList from "@/components/EventList";
+// import EventList from "@/components/EventList";
 
-async function fetchEvents() {
-  const response = await fetch(
-    "https://altschool-eventful-backend.onrender.com/api/events"
-  );
+// async function fetchEvents() {
+//   const response = await fetch(
+//     "https://altschool-eventful-backend.onrender.com/api/events"
+//   );
 
-  // Simulate network delay for demo purposes
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+//   // Simulate network delay for demo purposes
+//   await new Promise((resolve) => setTimeout(resolve, 2000));
 
-  const events = await response.json();
-  return events.data;
-}
+//   const events = await response.json();
+//   return events.data;
+// }
 
-const UpcomingEvents = async () => {
-  const events = await fetchEvents();
+// const UpcomingEvents = async () => {
+//   const events = await fetchEvents();
+//   return (
+//     <div className="upcoming-events">
+//       <div className="container">
+//         <h1>Upcoming Events</h1>
+//         <EventList events={events} />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default UpcomingEvents;
+
+"use client";
+import { useState, useEffect } from "react";
+import {
+  useQuery,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+import moment from "moment";
+
+const queryClient = new QueryClient();
+
+const UpcomingEvents = () => {
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["eventsData"],
+    queryFn: () =>
+      fetch("https://altschool-eventful-backend.onrender.com/api/events").then(
+        (res) => res.json()
+      ),
+  });
+
+  console.log(data);
+
+  const [activeCard, setActiveCard] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveCard(Math.floor(Math.random() * 5) + 1);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleActiveChange = (index) => {
+    setActiveCard(index);
+  };
+
+  if (isLoading) return <div>Loading...</div>;
+
+  if (error) return <h4>An error has occurred: {error.message}</h4>;
+
+  const recentEvents = data.data
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    .slice(0, 7);
+
   return (
     <div className="upcoming-events">
       <div className="container">
         <h1>Upcoming Events</h1>
-        <EventList events={events} />
+        <div className="expanding-cards">
+          {recentEvents.map((event, index) => (
+            <div
+              className={activeCard === index ? "panel active" : "panel"}
+              key={event.id}
+              style={{
+                backgroundImage: `url(${event.backdrop})`,
+              }}
+              onClick={() => handleActiveChange(index)}
+            >
+              <h3>{event.title}</h3>
+              <h5>{event.location}</h5>
+              <h6>{event.description}</h6>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
 };
 
-export default UpcomingEvents;
+const UpcomingEventsWithQueryClient = () => (
+  <QueryClientProvider client={queryClient}>
+    <UpcomingEvents />
+  </QueryClientProvider>
+);
+
+export default UpcomingEventsWithQueryClient;

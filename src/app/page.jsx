@@ -1,7 +1,8 @@
 import Showcase from "./pages/Home/Showcase";
 import ScrollAwareNavbar from "./components/ScrollAwareNavbar";
 import Features from "./pages/Home/Features";
-import UpcomingEvents from "./pages/Home/UpcomingEvents";
+import HowItWorks from "./pages/Home/HowItWorks";
+import UpcomingEventsWithQueryClient from "./pages/Home/UpcomingEvents";
 
 const Home = () => {
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -10,7 +11,8 @@ const Home = () => {
       <ScrollAwareNavbar />
       <Showcase />
       <Features />
-      <UpcomingEvents />
+      <UpcomingEventsWithQueryClient />
+      <HowItWorks />
     </div>
   );
 };

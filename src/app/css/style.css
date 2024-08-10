@@ -102,8 +102,7 @@ header a {
   margin-top: 3rem;
 }
 
-.features .container,
-.upcoming-events .container {
+.features .container {
   padding: 0 100px;
 }
 
@@ -238,4 +237,79 @@ header a {
 .event-card .event-organizer {
   margin: 0.3rem 0;
   font-family: "Oswald" sans-serif;
+}
+
+.upcoming-events {
+  background-image: url("/images/bg-img.webp");
+  background-color: hsla(10, 90%, 51%, 0.8);
+  background-blend-mode: screen;
+  background-size: cover;
+}
+
+.upcoming-events h1 {
+  margin-top: 2rem;
+  color: #fff;
+}
+
+.expanding-cards {
+  display: flex;
+  width: 90vw;
+  margin-bottom: 2rem;
+}
+
+.panel {
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 20px;
+  color: #fff;
+  cursor: pointer;
+  flex: 0.5;
+  margin: 10px;
+  position: relative;
+  transition: flex 0.7s ease-in;
+  filter: grayscale(0.7);
+}
+
+.panel h3,
+.panel h5,
+.panel h6 {
+  position: absolute;
+  bottom: 50px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+}
+
+.panel h3 {
+  font-size: 24px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+}
+
+.panel h5 {
+  border-radius: 10px;
+  padding: 3px 10px;
+  background-color: #000;
+  font-size: 0.5rem;
+  bottom: 80px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.panel h6 {
+  bottom: 20px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.panel.active {
+  flex: 5;
+  filter: grayscale(0);
+}
+
+.panel.active h3,
+.panel.active h5,
+.panel.active h6 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
 }
