@@ -4,6 +4,7 @@ import Features from "./pages/Home/Features";
 import HowItWorks from "./pages/Home/HowItWorks";
 import UpcomingEventsWithQueryClient from "./pages/Home/UpcomingEvents";
 import Newsletter from "./pages/Home/Newsletter";
+import Footer from "./components/Footer";
 
 const Home = () => {
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -15,6 +16,7 @@ const Home = () => {
       <UpcomingEventsWithQueryClient />
       <HowItWorks />
       <Newsletter />
+      <Footer />
     </div>
   );
 };
