@@ -35,56 +35,65 @@ const LoginPage = () => {
   };
 
   return (
-    <section className="header">
-      <div className="container grid grid-3">
-        <div></div>
-        <div className="info">
-          <Image src={logo} width={200} alt="Eventful logo"></Image>
-          <h5>Welcome Back</h5>
-          <span>Enter your account details below</span>
-          <form className="mt-3" onSubmit={handleSubmit}>
-            <div className="form-group">
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
+    <div className="auth-page grid">
+      <div className="auth-bg">
+        <div className="container">
+          <Image src={logo} width={200} height={50} />
+          <h2>
+            Create an account and join our million users in creating the best
+            event experience.
+          </h2>
+        </div>
+      </div>
+      <div className="auth-details">
+        <div className="container">
+          <div className="info">
+            <h5>Welcome Back</h5>
+            <span>Enter your account details below</span>
+            <form className="mt-3" onSubmit={handleSubmit}>
+              <div className="form-group">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
               <small>
                 <a href="#">Forgot your password?</a>{" "}
               </small>
-            </div>
-            <div className="form-group">
-              <button type="submit">SIGN IN</button>
-            </div>
-            <hr />
-            <div>
-              <span>
-                Don't have an account yet?
-                <a className="text-danger" href="/sign-up">
-                  Create one
-                </a>
-              </span>
-            </div>
-          </form>
+              <div className="form-group">
+                <button type="submit">SIGN IN</button>
+              </div>
+              <hr />
+              <div>
+                <span>Don't have an account yet?</span>
+                <span>
+                  {" "}
+                  <a className="text-danger" href="/sign-up">
+                    Create one
+                  </a>
+                </span>
+              </div>
+            </form>
+          </div>
         </div>
-        <div></div>
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -46,8 +46,6 @@ const UpcomingEvents = () => {
       ),
   });
 
-  console.log(data);
-
   const [activeCard, setActiveCard] = useState(0);
 
   useEffect(() => {
