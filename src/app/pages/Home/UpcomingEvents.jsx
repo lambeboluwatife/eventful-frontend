@@ -34,6 +34,7 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import moment from "moment";
+import Link from "next/link";
 
 const queryClient = new QueryClient();
 
@@ -74,7 +75,8 @@ const UpcomingEvents = () => {
         <h1>Upcoming Events</h1>
         <div className="expanding-cards">
           {recentEvents.map((event, index) => (
-            <div
+            <Link
+              href={`event/details/${event._id}`}
               className={activeCard === index ? "panel active" : "panel"}
               key={event.id}
               style={{
@@ -85,7 +87,7 @@ const UpcomingEvents = () => {
               <h3>{event.title}</h3>
               <h5>{event.location}</h5>
               <h6>{event.description}</h6>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
