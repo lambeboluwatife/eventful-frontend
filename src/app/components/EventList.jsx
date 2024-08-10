@@ -3,10 +3,13 @@ import Image from "next/image";
 import moment from "moment";
 
 const EventList = ({ events }) => {
+  const recentEvents = events
+    .sort((a, b) => b.createdAt - a.createdAt)
+    .slice(0, 3);
   return (
     <div className="event-cards">
       <div className="grid grid-4">
-        {events.map((event) => {
+        {recentEvents.map((event) => {
           return (
             <div className="event-card" key={event._id}>
               <Link href={`/events/details/${event._id}`}>
