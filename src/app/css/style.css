@@ -55,14 +55,17 @@ header a {
   height: 30px;
 }
 
-::placeholder {
+.navbar-search input::placeholder {
   font-size: smaller;
   color: #fff;
 }
 
+.navbar-search input:focus {
+  outline: none;
+}
+
 .showcase {
   background-image: url("/images/bg-image4.webp");
-  background-blend-mode: screen;
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -342,4 +345,63 @@ header a {
 .how-it-works .step-details {
   margin-top: 1.5rem;
   margin-left: 2rem;
+}
+
+.newsletter {
+  height: 50vh;
+  background-image: url("/images/bg-image2.webp");
+  background-color: hsla(288, 97%, 15%, 0.8);
+  background-blend-mode: screen;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+}
+
+.newsletter h1 {
+  margin-top: 5rem;
+  font-family: "Bowlby One SC", sans-serif;
+  font-size: 3rem;
+  color: #fff;
+}
+
+.newsletter input {
+  height: 2.5rem;
+  border: none;
+  border-radius: 10px;
+  width: 60%;
+}
+
+.newsletter input::placeholder {
+  color: #000;
+  font-family: "Montserrat", sans-serif;
+  padding-inline: 10px;
+}
+
+.newsletter button {
+  border: none;
+  color: #fff;
+  background-color: red;
+  font-family: "Montserrat", sans-serif;
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: 1rem;
+  font-weight: 900;
+}
+
+.newsletter button:hover {
+  cursor: pointer;
+  transform: scale(0.98);
+}
+
+.newsletter input:focus {
+  border: none;
+  outline: none;
+  padding-inline: 10px;
+}
+
+.newsletter h5 {
+  font-size: 0.8rem;
+  font-weight: 900;
+  margin-bottom: 2rem;
+  line-height: 1.5;
 }
