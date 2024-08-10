@@ -68,12 +68,10 @@ const RegisterPage = () => {
   };
 
   return (
-    <section className="header">
-      <div className="container grid grid-3">
-        <div></div>
+    <div className="auth-page grid">
+      <div className="auth-details">
         <div className="info">
-          <Image src={logo} width={200} alt="Eventful logo"></Image>
-          <h5>Create Eventful Account</h5>
+          <h5>Create Account</h5>
           <span>Enter your details below</span>
           <form className="mt-3" onSubmit={handleSubmit}>
             <div className="form-group">
@@ -161,8 +159,9 @@ const RegisterPage = () => {
             </div>
             <hr />
             <div>
+              <span>Have an account?</span>
               <span>
-                Have an account?
+                {" "}
                 <a className="text-danger" href="/sign-in">
                   Sign In
                 </a>
@@ -170,9 +169,18 @@ const RegisterPage = () => {
             </div>
           </form>
         </div>
-        <div></div>
+        ;
       </div>
-    </section>
+      <div className="auth-bg">
+        <div className="container">
+          <Image src={logo} width={200} height={50} />
+          <h2>
+            Create an account and join our million users in creating the best
+            event experience.
+          </h2>
+        </div>
+      </div>
+    </div>
   );
 };
 
