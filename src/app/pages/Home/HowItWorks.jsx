@@ -2,11 +2,11 @@ import { FaArrowAltCircleRight } from "react-icons/fa";
 
 const HowItWorks = () => {
   return (
-    <section class="how-it-works">
+    <section className="how-it-works">
       <div className="container">
         <h1>How It Works</h1>
-        <div class="steps">
-          <div class="step">
+        <div className="steps">
+          <div className="step">
             <div className="step icon">
               <FaArrowAltCircleRight size={32} color="red" />
             </div>
@@ -22,7 +22,7 @@ const HowItWorks = () => {
             </div>
           </div>
 
-          <div class="step">
+          <div className="step">
             <div className="step icon">
               <FaArrowAltCircleRight size={32} color="red" />
             </div>
@@ -38,7 +38,7 @@ const HowItWorks = () => {
             </div>
           </div>
 
-          <div class="step">
+          <div className="step">
             <div className="step icon">
               <FaArrowAltCircleRight size={32} color="red" />
             </div>
@@ -54,7 +54,7 @@ const HowItWorks = () => {
             </div>
           </div>
 
-          <div class="step">
+          <div className="step">
             <div className="step icon">
               <FaArrowAltCircleRight size={32} color="red" />
             </div>
