@@ -348,6 +348,7 @@ header a {
 }
 
 .newsletter {
+  margin-top: 5rem;
   height: 50vh;
   background-image: url("/images/bg-image2.webp");
   background-color: hsla(288, 97%, 15%, 0.8);
@@ -404,4 +405,55 @@ header a {
   font-weight: 900;
   margin-bottom: 2rem;
   line-height: 1.5;
+}
+
+footer {
+  margin-top: 5rem;
+  background-color: red;
+}
+
+footer .container {
+  padding: 0 100px;
+}
+
+footer .contact-info,
+footer .quick-links,
+footer .social-media {
+  margin: 5rem 0;
+  text-align: center;
+}
+
+footer h5 {
+  font-weight: 900;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+footer .contact-info p {
+  color: #fff;
+  margin: 1rem 0;
+}
+
+footer .quick-links ul {
+  list-style: none;
+}
+
+footer .quick-links ul li {
+  margin: 1rem 0;
+}
+
+footer .quick-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 900;
+  font-family: "Montserrat", sans-serif;
+}
+
+footer .quick-links a:hover {
+  font-size: 15px;
+}
+
+footer .social-media a {
+  margin: 0 1rem;
 }
