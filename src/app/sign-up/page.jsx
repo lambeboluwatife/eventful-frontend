@@ -171,12 +171,12 @@ const RegisterPage = () => {
         </div>
         ;
       </div>
-      <div className="auth-bg">
+      <div className="auth-bg2">
         <div className="container">
           <Image src={logo} width={200} height={50} />
           <h2>
-            Create an account and join our million users in creating the best
-            event experience.
+            Create an account and join million users in creating the best event
+            experience or attending astonishing events.
           </h2>
         </div>
       </div>
