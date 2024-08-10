@@ -40,8 +40,7 @@ const LoginPage = () => {
         <div className="container">
           <Image src={logo} width={200} height={50} />
           <h2>
-            Create an account and join our million users in creating the best
-            event experience.
+            We are happy you are back. Sign in to enjoy our awesome services.
           </h2>
         </div>
       </div>
