@@ -7,7 +7,6 @@ import Newsletter from "./pages/Home/Newsletter";
 import Footer from "./components/Footer";
 
 const Home = () => {
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <div>
       <ScrollAwareNavbar />
