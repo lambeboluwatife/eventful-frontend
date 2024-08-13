@@ -146,99 +146,66 @@ header a {
   text-align: left;
 }
 
-.event-cards {
-  margin: 2rem 0;
-  text-align: left;
+.events-container {
   display: grid;
-  grid-template-rows: subgrid;
-  grid-row: span 6;
-}
-
-.event-cards .grid-4 {
-  grid-template-columns: repeat(3, 1fr);
-  /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .event-card {
-  border: 1px solid #000;
+  background-color: #fff;
   border-radius: 10px;
-  position: relative;
-  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
-  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .event-card:hover {
-  transform: scale(0.95);
-  transition: ease-in;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.event-card a {
-  text-decoration: none;
-  color: #000;
-}
-
-.event-card .event-card-image {
+.event-image {
   width: 100%;
-  height: auto;
+  height: 150px;
   object-fit: cover;
 }
 
-.event-card-details {
-  padding: 10px;
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
+.event-content {
+  padding: 20px;
 }
 
-.event-card h3 {
-  color: #000;
+.event-title {
   font-size: 1.5rem;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-  display: block;
-}
-
-.event-card .event-location {
-  background-color: rebeccapurple;
-  color: #fff;
-  display: inline-block;
-  border-radius: 10px;
-  padding: 3px 10px;
-  font-size: 0.7rem;
-  margin: 0.2rem 0;
-  text-transform: uppercase;
-}
-
-.event-card .event-timeline {
-  margin: 0.2rem 0;
-}
-
-.event-card .event-date,
-.event-card .event-time {
+  margin: 0;
   color: #000;
-  margin-right: 0.5rem;
-  font-weight: 900;
-  font-family: "Oswald" sans-serif;
-  font-size: 1rem;
-  display: inline;
 }
 
-.event-card .event-time {
+.event-date,
+.event-location,
+.event-description {
+  margin: 5px 0;
+  color: #555;
+  font-family: "Montserrat", sans-serif;
+}
+
+.event-button {
+  display: inline-block;
+  padding: 5px 10px;
   background-color: red;
-  padding: 3px 10px;
   color: #fff;
+  text-decoration: none;
   border-radius: 10px;
+  transition: background-color 0.3s ease;
+  font-size: small;
+  margin-top: 0.5rem;
 }
 
-.event-card span {
-  display: inline;
-}
-
-.event-card .event-organizer {
-  margin: 0.3rem 0;
-  font-family: "Oswald" sans-serif;
+.event-button:hover {
+  background-color: rgb(137, 0, 0);
 }
 
 .upcoming-events {
@@ -432,6 +399,15 @@ header a {
   font-family: "Montserrat", sans-serif;
   width: 40%;
   line-height: 1.5;
+}
+
+.latest-events {
+  margin-top: 2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.latest-events h1 {
+  font-size: 2rem;
 }
 
 footer {

@@ -1,10 +1,14 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import "../css/login.css";
+import AlertMessage from "@/components/AlertMessages";
 import logo from "../../../public/images/Eventful Text Red.png";
 
 const RegisterPage = () => {
+  const router = useRouter();
+
   const [formData, setFormData] = useState({
     name: "",
     username: "",
@@ -15,6 +19,11 @@ const RegisterPage = () => {
     verifyPassword: "",
   });
 
+  const [showOrganizationName, setShowOrganizationName] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -22,15 +31,20 @@ const RegisterPage = () => {
       ...prevData,
       [name]: value,
     }));
+
+    if (name === "role") {
+      setShowOrganizationName(value === "organizer");
+    }
   };
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     console.log("Form Data:", formData);
     console.log("JSON String:", JSON.stringify(formData));
     try {
       const response = await fetch(
-        "https://altschool-eventful-backend.onrender.com/users/register",
+        "https://altschool-eventful-backend.onrender.com/api/auth/register",
         {
           method: "POST",
           mode: "cors",
@@ -42,8 +56,14 @@ const RegisterPage = () => {
         }
       );
 
+      setLoading(false);
+
       if (response.ok) {
-        console.log("Account created successfully");
+        setSuccessMessage(
+          "Account created successfully! Redirecting to sign-in page..."
+        );
+
+        setErrorMessage("");
 
         setFormData({
           name: "",
@@ -54,16 +74,22 @@ const RegisterPage = () => {
           password: "",
           verifyPassword: "",
         });
+
+        setTimeout(() => {
+          router.push("/sign-in");
+        }, 2000);
       } else {
         const responseData = await response.json();
-        console.error(
-          "Signing up failed with status:",
-          response.status,
-          responseData
+        setErrorMessage(
+          `Signing up failed: ${responseData.error || "An error occurred"}`
         );
+
+        setSuccessMessage("");
       }
     } catch (error) {
-      console.error("Error signing up:", error);
+      setErrorMessage(`Error signing up: ${error.message}`);
+
+      setSuccessMessage("");
     }
   };
 
@@ -73,6 +99,16 @@ const RegisterPage = () => {
         <div className="info">
           <h5>Create Account</h5>
           <span>Enter your details below</span>
+          <AlertMessage
+            message={successMessage}
+            type="success"
+            onClose={() => setSuccessMessage("")}
+          />
+          <AlertMessage
+            message={errorMessage}
+            type="error"
+            onClose={() => setErrorMessage("")}
+          />
           <form className="mt-3" onSubmit={handleSubmit}>
             <div className="form-group">
               <input
@@ -122,16 +158,19 @@ const RegisterPage = () => {
                 <option value="attendee">Attendee</option>
               </select>
             </div>
-            <div className="form-group">
-              <input
-                type="text"
-                id="organizationName"
-                name="organizationName"
-                placeholder="Organization Name"
-                value={formData.organizationName}
-                onChange={handleChange}
-              />
-            </div>
+            {showOrganizationName && (
+              <div className="form-group">
+                <input
+                  type="text"
+                  id="organizationName"
+                  name="organizationName"
+                  placeholder="Organization Name"
+                  value={formData.organizationName}
+                  onChange={handleChange}
+                  required={showOrganizationName}
+                />
+              </div>
+            )}
             <div className="form-group">
               <input
                 type="password"
@@ -155,7 +194,9 @@ const RegisterPage = () => {
               />
             </div>
             <div className="form-group">
-              <button type="submit">SIGN UP</button>
+              <button type="submit">
+                {loading ? <h4>creating account...</h4> : <h4>SIGN UP</h4>}
+              </button>
             </div>
             <hr />
             <div>

@@ -12,7 +12,7 @@ const Footer = () => {
     <footer>
       <div className="container grid grid-3">
         <div className="contact-info">
-          <Image src={logo} width={200} height={50} />
+          <Image src={logo} width={200} height={50} alt="Eventful logo" />
           <h5>Create and discover events around you.</h5>
           <p>Email: contact@eventful.com</p>
           <p>Phone: +123 456 7890</p>
