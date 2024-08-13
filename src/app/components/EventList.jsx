@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import moment from "moment";
-import Button from "./Button";
 
 const EventList = ({ events }) => {
   return (
