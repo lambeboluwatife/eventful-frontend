@@ -5,7 +5,6 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
-import moment from "moment";
 import Link from "next/link";
 
 const queryClient = new QueryClient();

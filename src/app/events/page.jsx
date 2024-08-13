@@ -1,18 +1,20 @@
 import Footer from "@/components/Footer";
 import ScrollAwareNavbar from "@/components/ScrollAwareNavbar";
 import EventsHero from "@/pages/Events/EventsHero";
+import FilteredEvents from "@/pages/Events/FilteredEvents";
 import LatestEvents from "@/pages/Events/LatestEvents";
+import axios from "axios";
 
 async function fetchEvents() {
-  const response = await fetch(
-    "https://altschool-eventful-backend.onrender.com/api/events"
-  );
-
-  new Promise((resolve) => setTimeout(resolve, 2000));
-
-  const events = await response.json();
-
-  return events.data;
+  try {
+    const response = await axios.get(
+      "https://altschool-eventful-backend.onrender.com/api/events"
+    );
+    return response.data.data;
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    return [];
+  }
 }
 
 const EventsPage = async () => {
@@ -23,6 +25,7 @@ const EventsPage = async () => {
       <ScrollAwareNavbar />
       <EventsHero />
       <LatestEvents events={events} />
+      <FilteredEvents events={events} />
       <Footer />
     </div>
   );
