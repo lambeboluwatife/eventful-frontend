@@ -1,36 +1,64 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import "../css/login.css";
 import logo from "../../../public/images/Eventful Text Red.png";
 import axios from "axios";
+import AlertMessage from "@/components/AlertMessages";
 
 const LoginPage = () => {
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
-
     try {
-      axios
-        .post("https://altschool-eventful-backend.onrender.com/users/login", {
-          email,
-          password,
-        })
+      await axios
+        .post(
+          "https://altschool-eventful-backend.onrender.com/api/auth/login",
+          {
+            email,
+            password,
+          }
+        )
         .then(function (response) {
-          console.log(response);
           const token = response.data.token;
           localStorage.setItem("token", token);
 
+          setSuccessMessage(
+            "Login successfully! Redirecting to your dashboard..."
+          );
+
+          setErrorMessage("");
+
           setEmail("");
           setPassword("");
+
+          setTimeout(() => {
+            router.push("/sign-in");
+          }, 2000);
         })
         .catch(function (error) {
-          console.error("Error:", error.response);
+          setErrorMessage(
+            `Signing in failed: ${
+              error.response.data.message || "An error occurred"
+            }`
+          );
+
+          setSuccessMessage("");
         });
     } catch (error) {
-      console.error(error);
+      setErrorMessage(`Error signing in: ${error.message}`);
+      setSuccessMessage("");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -49,6 +77,16 @@ const LoginPage = () => {
           <div className="info">
             <h5>Welcome Back</h5>
             <span>Enter your account details below</span>
+            <AlertMessage
+              message={successMessage}
+              type="success"
+              onClose={() => setSuccessMessage("")}
+            />
+            <AlertMessage
+              message={errorMessage}
+              type="error"
+              onClose={() => setErrorMessage("")}
+            />
             <form className="mt-3" onSubmit={handleSubmit}>
               <div className="form-group">
                 <input
@@ -76,7 +114,10 @@ const LoginPage = () => {
                 <a href="#">Forgot your password?</a>{" "}
               </small>
               <div className="form-group">
-                <button type="submit">SIGN IN</button>
+                <button type="submit">
+                  {" "}
+                  {loading ? <h4>signing in...</h4> : <h4>SIGN IN</h4>}
+                </button>
               </div>
               <hr />
               <div>

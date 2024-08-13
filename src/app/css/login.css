@@ -73,6 +73,10 @@ button {
   margin: 0.5rem 0;
 }
 
+button h4 {
+  font-family: "Montserrat", sans-serif;
+}
+
 button:hover {
   cursor: pointer;
   transform: scale(0.95);
