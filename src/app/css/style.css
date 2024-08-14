@@ -380,6 +380,81 @@
   font-family: "Montserrat", sans-serif;
 }
 
+.event-details-content .container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.event-details-content .first-content {
+  flex: 0 0 70%;
+}
+
+.event-details-content .second-content {
+  flex: 0 0 30%;
+}
+
 .event-details-content .date {
   font-weight: 800;
+}
+
+.event-details-content .first-content h1 {
+  font-size: 3.5rem;
+  margin-top: 1rem;
+}
+
+.event-details-content .first-content h6 {
+  margin: 2rem 0;
+}
+
+.event-details-content .date-time div span:nth-of-type(2) {
+  margin-right: 1rem;
+}
+
+.event-details-content .location,
+.event-details-content .organizer {
+  margin-top: 2rem;
+}
+
+.event-details-content .organizer h2 {
+  background-color: red;
+  margin-top: 1rem;
+  padding: 1rem 0.5rem;
+  display: inline-block;
+  color: #fff;
+  border-radius: 50px;
+}
+
+.event-details .other-events {
+  margin-top: 5rem;
+  background-color: #f4f3f3;
+  padding: 2rem 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.event-details-content .second-content .price {
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.event-details-content .second-content .price h1 {
+  margin-top: 1rem;
+  font-size: 5rem;
+}
+
+.event-details-content .second-content .price button {
+  width: 100%;
+  background-color: red;
+  color: #fff;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  padding: 10px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.event-details-content .second-content .price button:hover {
+  transform: scale(0.98);
 }
