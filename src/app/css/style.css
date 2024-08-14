@@ -1,68 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:wght@500&family=Oswald:wght@200..700&family=Roboto:wght@400;500;700&display=swap");
-.nav {
-  background-color: red;
-  color: #fff;
-  padding: 20px 0;
-  position: fixed;
-  width: 100%;
-  z-index: 4;
-  font-family: "Montserrat", sans-serif;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-header h1 {
-  font-size: 2rem;
-  font-weight: 900;
-}
-
-header a {
-  text-decoration: none;
-  color: #fff;
-}
-
-.nav-links {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-item {
-  list-style-type: none;
-  margin: 0 2rem;
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.nav-item a {
-  text-decoration: none;
-}
-
-.nav-item a:hover {
-  font-size: 18px;
-}
-
-.navbar-search input {
-  background-color: transparent;
-  border: 1.5px solid #fff;
-  border-radius: 20px;
-  padding-inline: 10px;
-  color: #fff;
-  height: 30px;
-}
-
-.navbar-search input::placeholder {
-  font-size: smaller;
-  color: #fff;
-}
-
-.navbar-search input:focus {
-  outline: none;
-}
 
 .showcase {
   background-image: url("/images/bg-image2.webp");
@@ -74,7 +10,8 @@ header a {
   height: 100vh;
 }
 
-.showcase h1 {
+.showcase h1,
+.event-details-showcase h1 {
   font-size: 6rem;
   color: red;
   font-family: "Bowlby One SC", sans-serif;
@@ -243,7 +180,8 @@ header a {
 
 .panel h3,
 .panel h5,
-.panel h6 {
+.panel h6,
+.panel a {
   position: absolute;
   bottom: 50px;
   left: 20px;
@@ -262,13 +200,25 @@ header a {
   padding: 3px 10px;
   background-color: #000;
   font-size: 0.5rem;
-  bottom: 80px;
+  bottom: 90px;
   font-family: "Montserrat", sans-serif;
 }
 
 .panel h6 {
-  bottom: 20px;
+  bottom: 30px;
   font-family: "Montserrat", sans-serif;
+}
+
+.panel a {
+  border-radius: 10px;
+  padding: 3px 10px;
+  background-color: red;
+  font-size: 0.7rem;
+  font-weight: 600;
+  bottom: 10px;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  color: #fff;
 }
 
 .panel.active {
@@ -278,7 +228,8 @@ header a {
 
 .panel.active h3,
 .panel.active h5,
-.panel.active h6 {
+.panel.active h6,
+.panel.active a {
   opacity: 1;
   transition: opacity 0.3s ease-in 0.4s;
 }
@@ -410,53 +361,25 @@ header a {
   font-size: 2rem;
 }
 
-footer {
-  margin-top: 5rem;
-  background-color: red;
-}
-
-footer .container {
-  padding: 0 100px;
-}
-
-footer .contact-info,
-footer .quick-links,
-footer .social-media {
-  margin: 5rem 0;
+.event-details-hero {
+  background-size: cover;
+  background-position: center;
   text-align: center;
+  position: relative;
+  z-index: 3;
+  height: 80vh;
+  overflow: hidden;
 }
 
-footer h5 {
-  font-weight: 900;
-  font-family: "Montserrat", sans-serif;
-  margin-bottom: 2rem;
-  color: #fff;
+.event-details-showcase h1 {
+  font-size: 5rem;
 }
 
-footer .contact-info p {
-  color: #fff;
-  margin: 1rem 0;
-}
-
-footer .quick-links ul {
-  list-style: none;
-}
-
-footer .quick-links ul li {
-  margin: 1rem 0;
-}
-
-footer .quick-links a {
-  text-decoration: none;
-  color: #fff;
-  font-weight: 900;
+.event-details-content {
+  margin-top: 2rem;
   font-family: "Montserrat", sans-serif;
 }
 
-footer .quick-links a:hover {
-  font-size: 15px;
-}
-
-footer .social-media a {
-  margin: 0 1rem;
+.event-details-content .date {
+  font-weight: 800;
 }

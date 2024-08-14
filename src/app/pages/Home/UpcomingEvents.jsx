@@ -6,6 +6,7 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import Link from "next/link";
+import LoadingPage from "@/loading";
 
 const queryClient = new QueryClient();
 
@@ -32,7 +33,7 @@ const UpcomingEvents = () => {
     setActiveCard(index);
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingPage />;
 
   if (error) return <h4>An error has occurred: {error.message}</h4>;
 
@@ -46,8 +47,7 @@ const UpcomingEvents = () => {
         <h1>Upcoming Events</h1>
         <div className="expanding-cards">
           {recentEvents.map((event, index) => (
-            <Link
-              href={`event/details/${event._id}`}
+            <div
               className={activeCard === index ? "panel active" : "panel"}
               key={event._id}
               style={{
@@ -57,8 +57,13 @@ const UpcomingEvents = () => {
             >
               <h3>{event.title}</h3>
               <h5>{event.location}</h5>
-              <h6>{event.description}</h6>
-            </Link>
+              <h6>
+                {event.description.length > 100
+                  ? event.description.substring(0, 15) + "..."
+                  : event.description}
+              </h6>
+              <Link href={`events/details/${event._id}`}>See Details</Link>
+            </div>
           ))}
         </div>
       </div>
