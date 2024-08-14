@@ -15,7 +15,7 @@ const Header = ({ backgroundColor }) => {
       <div className="container">
         <header>
           <Link href="/">
-            <Image src={logo} width={100} alt="Eventful logo"></Image>
+            <Image src={logo} width={100} alt="Eventful logo" priority></Image>
           </Link>
 
           <nav>
