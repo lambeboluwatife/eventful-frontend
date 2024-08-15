@@ -32,6 +32,8 @@ const LoginPage = () => {
           const token = response.data.token;
           localStorage.setItem("token", token);
 
+          document.cookie = `token=${token}; path=/`;
+
           setSuccessMessage(
             "Login successfully! Redirecting to your dashboard..."
           );
@@ -42,7 +44,7 @@ const LoginPage = () => {
           setPassword("");
 
           setTimeout(() => {
-            router.push("/sign-in");
+            router.push("/dashboard");
           }, 2000);
         })
         .catch(function (error) {
@@ -62,11 +64,20 @@ const LoginPage = () => {
     }
   };
 
+  // const handleSubmit = async () => {
+  //   const result = await signIn("credentials", {
+  //     email,
+  //     password,
+  //     redirect: true,
+  //     callbackUrl: "/dashboard",
+  //   });
+  // };
+
   return (
     <div className="auth-page grid">
       <div className="auth-bg">
         <div className="container">
-          <Image src={logo} width={200} height={50} />
+          <Image src={logo} width={200} height={50} alt="Eventful logo" />
           <h2>
             We are happy you are back. Sign in to enjoy our awesome services.
           </h2>
