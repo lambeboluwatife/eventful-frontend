@@ -214,7 +214,7 @@ const RegisterPage = () => {
       </div>
       <div className="auth-bg2">
         <div className="container">
-          <Image src={logo} width={200} height={50} />
+          <Image src={logo} width={200} height={50} alt="Eventful logo" />
           <h2>
             Create an account and join million users in creating the best event
             experience or attending astonishing events.

@@ -57,6 +57,12 @@ header a {
   font-weight: 600;
 }
 
+.dashboard-link.nav-item {
+  background-color: red;
+  padding: 10px;
+  border-radius: 50px;
+}
+
 .nav-item a {
   text-decoration: none;
 }
