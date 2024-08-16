@@ -80,8 +80,6 @@ const CreateEvent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    console.log(backdrop);
-    console.log(backdrop.name);
 
     try {
       const formDataToSubmit = new FormData();
@@ -95,15 +93,6 @@ const CreateEvent = () => {
       formDataToSubmit.append("capacity", formData.capacity);
       formDataToSubmit.append("reminders", formData.reminders);
       formDataToSubmit.append("backdrop", backdrop);
-
-      // const formDataToSubmit = new FormData();
-      // for (const key in formData) {
-      //   if (key === "backdrop" && formData[key] instanceof File) {
-      //     formDataToSubmit.append(key, formData[key]);
-      //   } else {
-      //     formDataToSubmit.append(key, formData[key]);
-      //   }
-      // }
 
       const response = await axios.post(
         "https://altschool-eventful-backend.onrender.com/api/events/create-event",

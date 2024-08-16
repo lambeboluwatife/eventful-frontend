@@ -111,6 +111,8 @@
   width: 100%;
   height: 150px;
   object-fit: cover;
+  background-blend-mode: multiply;
+  background-color: #7f7e7e;
 }
 
 .event-content {
@@ -481,6 +483,7 @@
 .organizer-dashboard-details .organizer-events,
 .organizer-dashboard-details .organizer-analytics {
   padding-top: 2rem;
+  font-family: "Montserrat", sans-serif;
 }
 
 .organizer-dashboard-details .organizer-analytics a {
