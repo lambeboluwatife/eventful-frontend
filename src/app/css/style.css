@@ -454,7 +454,8 @@
   font-size: 5rem;
 }
 
-.event-details-content .second-content .price button {
+.event-details-content .second-content .price button,
+.organizer-dashboard-details .organizer-analytics a {
   width: 100%;
   background-color: red;
   color: #fff;
@@ -466,7 +467,8 @@
   cursor: pointer;
 }
 
-.event-details-content .second-content .price button:hover {
+.event-details-content .second-content .price button:hover,
+.organizer-dashboard-details .organizer-analytics a:hover {
   transform: scale(0.98);
 }
 
@@ -474,4 +476,15 @@
   background-image: url("/images/bg-image7.webp");
   height: 60vh;
   background-position: bottom;
+}
+
+.organizer-dashboard-details .organizer-events,
+.organizer-dashboard-details .organizer-analytics {
+  padding-top: 2rem;
+}
+
+.organizer-dashboard-details .organizer-analytics a {
+  text-decoration: none;
+  display: block;
+  text-align: center;
 }

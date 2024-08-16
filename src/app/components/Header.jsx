@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
 import Link from "next/link";
 import logo from "../../../public/images/Eventful Text White.png";
 import Image from "next/image";
@@ -11,11 +12,17 @@ const Header = ({ backgroundColor }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const token = localStorage.getItem("token");
-      const currentTime = Math.floor(Date.now() / 1000);
-      if (decoded.exp < currentTime) {
-        localStorage.removeItem("token");
+      if (token) {
+        const decoded = jwtDecode(token);
+
+        const currentTime = Math.floor(Date.now() / 1000);
+        if (decoded.exp < currentTime) {
+          localStorage.removeItem("token");
+        } else {
+          setToken(token);
+        }
       } else {
-        setToken(token);
+        return null;
       }
     }
   }, []);
