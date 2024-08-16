@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 import axios from "axios";
 import LoadingPage from "@/loading";
@@ -61,13 +62,15 @@ const OrganizerDashboard = () => {
       <div className="container">
         <div className="organizer-events">
           <h1>Created Events</h1>
-          {data?.createdEvents === null ? (
+          {data?.createdEvents !== null ? (
             <h6>Events</h6>
           ) : (
             <h6>No created events</h6>
           )}
         </div>
-        <div className="organizer-analytics">Analytics</div>
+        <div className="organizer-analytics">
+          <Link href="/create-event">Create Event</Link>
+        </div>
       </div>
     </section>
   );
