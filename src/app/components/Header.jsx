@@ -11,18 +11,22 @@ const Header = ({ backgroundColor }) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const token = localStorage.getItem("token");
-      if (token) {
-        const decoded = jwtDecode(token);
+      const storedToken = localStorage.getItem("token");
+      if (storedToken) {
+        try {
+          const decoded = jwtDecode(storedToken);
 
-        const currentTime = Math.floor(Date.now() / 1000);
-        if (decoded.exp < currentTime) {
-          localStorage.removeItem("token");
-        } else {
-          setToken(token);
+          const currentTime = Math.floor(Date.now() / 1000);
+          if (decoded.exp < currentTime) {
+            localStorage.removeItem("token");
+            setToken(null);
+          } else {
+            setToken(storedToken);
+          }
+        } catch (error) {
+          console.error("Failed to decode token:", error);
+          setToken(null);
         }
-      } else {
-        return null;
       }
     }
   }, []);
@@ -65,17 +69,6 @@ const Header = ({ backgroundColor }) => {
                   <Link href="/dashboard"> Dashboard</Link>
                 </li>
               )}
-              {/* <div className="navbar-search">
-                <form>
-                  <input
-                    type="search"
-                    name="search"
-                    id="search"
-                    required
-                    placeholder="Search For Event"
-                  />
-                </form>
-              </div> */}
             </ul>
           </nav>
         </header>

@@ -21,7 +21,7 @@ const EventList = ({ events }) => {
                 : event.title}
             </h2>
             <h6 className="event-date">
-              {moment(event.date, "DD/MM/YYYY").format("ddd. D MMM, YY")}
+              {moment(event.date).format("ddd. D MMM, YY")}
             </h6>
             <h6 className="event-location">{event.location}</h6>
             <h6 className="event-description">

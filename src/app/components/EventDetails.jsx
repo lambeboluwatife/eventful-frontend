@@ -33,7 +33,8 @@ const EventDetails = async ({ id }) => {
   const events = await fetchEvents();
 
   const otherEvents = events.filter(
-    (newEvent) => newEvent.category === event.category
+    (newEvent) =>
+      newEvent.category === event.category && newEvent._id !== event._id
   );
 
   return (
@@ -54,7 +55,7 @@ const EventDetails = async ({ id }) => {
         <div className="container">
           <div className="first-content">
             <div className="date">
-              {moment(event.date, "DD/MM/YYYY").format("dddd MMMM, YYYY")}
+              {moment(event.date).format("dddd MMMM, YYYY")}
             </div>
             <h1>{event.title}</h1>
             <h6>{event.description}</h6>
@@ -64,9 +65,7 @@ const EventDetails = async ({ id }) => {
                 <span className="icon">
                   <CiCalendarDate color="red" size={20} />
                 </span>
-                <span>
-                  {moment(event.date, "DD/MM/YYYY").format("dddd MMMM, YYYY")}
-                </span>
+                <span>{moment(event.date).format("dddd MMMM, YYYY")}</span>
                 <span>
                   <strong>{event.time}</strong>
                 </span>
