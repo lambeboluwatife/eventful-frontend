@@ -2,7 +2,7 @@ import Footer from "@/components/Footer";
 import ScrollAwareNavbar from "@/components/ScrollAwareNavbar";
 
 export const metadata = {
-  title: "Eventful - DIscover all events",
+  title: "Eventful - Discover all events",
   description: "Discover and browser through variety of events on eventful.",
 };
 
