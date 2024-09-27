@@ -40,8 +40,13 @@ const RegisterPage = () => {
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
-    console.log("Form Data:", formData);
-    console.log("JSON String:", JSON.stringify(formData));
+
+    const submitData = { ...formData };
+
+    if (submitData.role === "attendee") {
+      delete submitData.organizationName;
+    }
+
     try {
       const response = await fetch(
         "https://altschool-eventful-backend.onrender.com/api/auth/register",
@@ -52,7 +57,7 @@ const RegisterPage = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(submitData),
         }
       );
 
@@ -62,7 +67,6 @@ const RegisterPage = () => {
         setSuccessMessage(
           "Account created successfully! Redirecting to sign-in page..."
         );
-
         setErrorMessage("");
 
         setFormData({
@@ -83,12 +87,10 @@ const RegisterPage = () => {
         setErrorMessage(
           `Signing up failed: ${responseData.error || "An error occurred"}`
         );
-
         setSuccessMessage("");
       }
     } catch (error) {
       setErrorMessage(`Error signing up: ${error.message}`);
-
       setSuccessMessage("");
     }
   };

@@ -1,8 +1,13 @@
+"use client";
+import useAuth from "@/hooks/useAuth";
+import LoadingPage from "@/loading";
 import axios from "axios";
 import moment from "moment";
 import { CiCalendarDate } from "react-icons/ci";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import EventList from "./EventList";
+import { applyToEvent } from "@/utils/ApplyForEvent";
+import { generateTicket } from "@/utils/generateTicket";
 
 async function fetchEvent(id) {
   try {
@@ -29,7 +34,22 @@ async function fetchEvents() {
 }
 
 const EventDetails = async ({ id }) => {
+  const { decodedToken, isLoading } = useAuth();
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
+
   const event = await fetchEvent(id);
+
+  const applicantApplied = event.applicants.some(
+    (applicant) => applicant.applicantId === decodedToken.user._id
+  );
+
+  const ticketGenerated = event.tickets.some(
+    (applicant) => applicant.attendeeId === decodedToken.user._id
+  );
+
   const events = await fetchEvents();
 
   const otherEvents = events.filter(
@@ -94,7 +114,23 @@ const EventDetails = async ({ id }) => {
               <h3>Price:</h3>
               <h1>{event.price === 0 ? "Free" : `N${event.price}`}</h1>
               <h6>Ticket Sold: {event.ticketsSold}</h6>
-              <button>Apply For This Event</button>
+              {decodedToken ? (
+                applicantApplied ? (
+                  ticketGenerated ? (
+                    "Ticket generated, check dashboard for ticket"
+                  ) : (
+                    <button onClick={() => generateTicket(id)}>
+                      Generate Ticket
+                    </button>
+                  )
+                ) : (
+                  <button onClick={() => applyToEvent(id)}>
+                    Apply For This Event
+                  </button>
+                )
+              ) : (
+                <p>Please sign in to apply for this event.</p>
+              )}
             </div>
           </div>
         </div>

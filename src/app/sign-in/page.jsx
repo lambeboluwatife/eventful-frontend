@@ -5,6 +5,7 @@ import Image from "next/image";
 import "../css/login.css";
 import logo from "../../../public/images/Eventful Text Red.png";
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 import AlertMessage from "@/components/AlertMessages";
 
 const LoginPage = () => {
@@ -20,58 +21,42 @@ const LoginPage = () => {
     setLoading(true);
     e.preventDefault();
     try {
-      await axios
-        .post(
-          "https://altschool-eventful-backend.onrender.com/api/auth/login",
-          {
-            email,
-            password,
-          }
-        )
-        .then(function (response) {
-          const token = response.data.token;
-          localStorage.setItem("token", token);
+      const response = await axios.post(
+        "https://altschool-eventful-backend.onrender.com/api/auth/login",
+        {
+          email,
+          password,
+        }
+      );
 
-          document.cookie = `token=${token}; path=/`;
+      const token = response.data.token;
+      localStorage.setItem("token", token);
 
-          setSuccessMessage(
-            "Login successfully! Redirecting to your dashboard..."
-          );
+      const decodedToken = jwtDecode(token);
+      localStorage.setItem("decodedToken", JSON.stringify(decodedToken));
 
-          setErrorMessage("");
+      document.cookie = `token=${token}; path=/`;
 
-          setEmail("");
-          setPassword("");
+      setSuccessMessage("Login successfully! Redirecting to your dashboard...");
 
-          setTimeout(() => {
-            router.push("/dashboard");
-          }, 2000);
-        })
-        .catch(function (error) {
-          setErrorMessage(
-            `Signing in failed: ${
-              error.response.data.message || "An error occurred"
-            }`
-          );
+      setErrorMessage("");
+      setEmail("");
+      setPassword("");
 
-          setSuccessMessage("");
-        });
+      setTimeout(() => {
+        router.push("/dashboard");
+      }, 2000);
     } catch (error) {
-      setErrorMessage(`Error signing in: ${error.message}`);
+      setErrorMessage(
+        `Signing in failed: ${
+          error.response?.data.message || "An error occurred"
+        }`
+      );
       setSuccessMessage("");
     } finally {
       setLoading(false);
     }
   };
-
-  // const handleSubmit = async () => {
-  //   const result = await signIn("credentials", {
-  //     email,
-  //     password,
-  //     redirect: true,
-  //     callbackUrl: "/dashboard",
-  //   });
-  // };
 
   return (
     <div className="auth-page grid">
@@ -126,7 +111,6 @@ const LoginPage = () => {
               </small>
               <div className="form-group">
                 <button type="submit">
-                  {" "}
                   {loading ? <h4>signing in...</h4> : <h4>SIGN IN</h4>}
                 </button>
               </div>

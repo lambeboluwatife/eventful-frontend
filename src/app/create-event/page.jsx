@@ -1,51 +1,16 @@
 "use client";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { jwtDecode } from "jwt-decode";
+import useAuth from "@/hooks/useAuth";
+import { getToken } from "@/utils/tokenUtils";
 import Link from "next/link";
 import AlertMessage from "@/components/AlertMessages";
 import axios from "axios";
 
 const CreateEvent = () => {
-  const [minDate, setMinDate] = useState("");
-  const [token, setToken] = useState(null);
   const router = useRouter();
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const accessToken = localStorage.getItem("token");
-
-      if (accessToken) {
-        try {
-          const decoded = jwtDecode(accessToken);
-          const currentTime = Math.floor(Date.now() / 1000);
-
-          if (decoded.exp < currentTime) {
-            localStorage.removeItem("token");
-            router.push("/sign-in");
-          } else {
-            setToken(accessToken);
-          }
-        } catch (error) {
-          console.error("Failed to decode token:", error);
-          router.push("/sign-in");
-        }
-      } else {
-        return null;
-      }
-    }
-
-    const today = new Date();
-    const tomorrow = new Date(today);
-    tomorrow.setDate(today.getDate() + 1);
-
-    const yyyy = tomorrow.getFullYear();
-    const mm = String(tomorrow.getMonth() + 1).padStart(2, "0");
-    const dd = String(tomorrow.getDate()).padStart(2, "0");
-
-    setMinDate(`${yyyy}-${mm}-${dd}`);
-  }, []);
-
+  const decodedToken = useAuth("/sign-in");
+  const [minDate, setMinDate] = useState("");
   const [formData, setFormData] = useState({
     title: "",
     location: "",
@@ -57,20 +22,29 @@ const CreateEvent = () => {
     capacity: "",
     reminders: "",
   });
-
-  const [backdrop, setBackdrop] = useState();
-
-  function handleFileChange(event) {
-    setBackdrop(event.target.files[0]);
-  }
-
+  const [backdrop, setBackdrop] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
+
+    const yyyy = tomorrow.getFullYear();
+    const mm = String(tomorrow.getMonth() + 1).padStart(2, "0");
+    const dd = String(tomorrow.getDate()).padStart(2, "0");
+
+    setMinDate(`${yyyy}-${mm}-${dd}`);
+  }, []);
+
+  const handleFileChange = (event) => {
+    setBackdrop(event.target.files[0]);
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setFormData((prevData) => ({
       ...prevData,
       [name]: name === "capacity" || name === "price" ? Number(value) : value,
@@ -93,6 +67,8 @@ const CreateEvent = () => {
       formDataToSubmit.append("capacity", formData.capacity);
       formDataToSubmit.append("reminders", formData.reminders);
       formDataToSubmit.append("backdrop", backdrop);
+
+      const token = getToken();
 
       const response = await axios.post(
         "https://altschool-eventful-backend.onrender.com/api/events/create-event",
@@ -120,7 +96,6 @@ const CreateEvent = () => {
         capacity: "",
         reminders: "",
       });
-
       setBackdrop(null);
 
       setTimeout(() => {
@@ -160,6 +135,7 @@ const CreateEvent = () => {
         />
         <form onSubmit={handleSubmit}>
           <div className="container grid">
+            {/* Input fields for event details */}
             <div className="form-group">
               <input
                 type="text"
@@ -208,6 +184,9 @@ const CreateEvent = () => {
                 <option value="speaker session">Speaker Session</option>
                 <option value="networking session">Networking Session</option>
                 <option value="conference">Conference</option>
+                <option value="speaker session">Speaker Session</option>
+                <option value="networking session">Networking Session</option>
+                <option value="conference">Conference</option>
                 <option value="technology">Technology</option>
                 <option value="seminar">Seminar</option>
                 <option value="arts">Arts</option>
@@ -223,6 +202,7 @@ const CreateEvent = () => {
                 <option value="corporate meeting">Corporate Meeting</option>
               </select>
             </div>
+
             <div className="form-group">
               <textarea
                 required
@@ -295,9 +275,9 @@ const CreateEvent = () => {
           </div>
           <hr className="bg-danger" />
 
-          <button className="cancel">
-            <Link href="/dashboard">Cancel</Link>
-          </button>
+          <Link href="/dashboard" className="cancel">
+            Cancel
+          </Link>
 
           <button className="button" type="submit">
             {loading ? <h4>Creating event...</h4> : <h4>Create Event</h4>}

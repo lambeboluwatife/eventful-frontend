@@ -64,7 +64,7 @@ const OrganizerDashboard = () => {
       <div className="container">
         <div className="organizer-events">
           <h1>Created Events</h1>
-          {data?.createdEvents !== null ? (
+          {data?.createdEvents !== "" ? (
             <EventListTable events={data?.createdEvents} />
           ) : (
             <h6>No created events</h6>
