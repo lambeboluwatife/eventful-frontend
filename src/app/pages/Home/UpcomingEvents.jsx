@@ -59,7 +59,7 @@ const UpcomingEvents = () => {
               <h5>{event.location}</h5>
               <h6>
                 {event.description.length > 100
-                  ? event.description.substring(0, 15) + "..."
+                  ? event.description.substring(0, 100) + "..."
                   : event.description}
               </h6>
               <Link href={`events/details/${event._id}`}>See Details</Link>

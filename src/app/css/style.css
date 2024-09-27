@@ -22,6 +22,10 @@
   margin-top: 10rem;
 }
 
+.showcase h1 {
+  line-height: 1.2;
+}
+
 .showcase h2 {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
@@ -171,6 +175,8 @@
   background-size: auto 100%;
   background-position: center;
   background-repeat: no-repeat;
+  background-blend-mode: multiply;
+  background-color: #bfbfbf;
   height: 80vh;
   border-radius: 20px;
   color: #fff;
