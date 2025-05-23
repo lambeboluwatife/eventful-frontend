@@ -62,3 +62,63 @@
 .overall-analytics .analytics-data {
   margin-top: 0.5rem;
 }
+
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.dashboard-title {
+  text-align: center;
+  color: #b22222;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.events,
+.tickets,
+.reminders {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.event-card,
+.ticket-card,
+.reminder-card {
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.event-card h3,
+.ticket-card p,
+.reminder-card p {
+  margin-bottom: 10px;
+}
+
+.event-card p,
+.ticket-card p,
+.reminder-card p {
+  font-size: 14px;
+  color: #666;
+}
+
+h2 {
+  font-size: 28px;
+  color: #b22222;
+  margin-bottom: 20px;
+}
+
+p strong {
+  color: #333;
+}

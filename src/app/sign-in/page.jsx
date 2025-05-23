@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { jwtDecode } from "jwt-decode";
 import Image from "next/image";
 import "../css/login.css";
 import logo from "../../../public/images/Eventful Text Red.png";
 import axios from "axios";
-import { jwtDecode } from "jwt-decode";
 import AlertMessage from "@/components/AlertMessages";
 
 const LoginPage = () => {
@@ -22,10 +22,17 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://altschool-eventful-backend.onrender.com/api/auth/login",
+        "/api/auth/login",
         {
           email,
           password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          withCredentials: true,
         }
       );
 
