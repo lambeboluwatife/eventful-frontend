@@ -184,9 +184,6 @@ const CreateEvent = () => {
                 <option value="speaker session">Speaker Session</option>
                 <option value="networking session">Networking Session</option>
                 <option value="conference">Conference</option>
-                <option value="speaker session">Speaker Session</option>
-                <option value="networking session">Networking Session</option>
-                <option value="conference">Conference</option>
                 <option value="technology">Technology</option>
                 <option value="seminar">Seminar</option>
                 <option value="arts">Arts</option>
